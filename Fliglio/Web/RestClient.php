@@ -61,7 +61,7 @@ class RestClient {
 		$resp = $this->curl->request($req);
 
 		// If not an "Ok" http status, map the code to an exception and throw
-		if ($resp->getHttpCode() != 200 && $resp->getHttpCode() != 201 && $resp->getHttpCode() != 202) {
+		if (substr($resp->getHttpCode(), 0, 1) != 2) {
 			$msg = "Response code " . $resp->getHttpCode() . " from " . $req->getUrl();
 
 			// Find exception class name
